@@ -10,13 +10,19 @@
 //---------------------------------------------------------
 
 #include <iostream> //cout, cin
+#include <iomanip>  //setprecision, setw
 #include <cstdlib>  //EXIT_SUCCESS
 #include <limits>   //numeric_limits
-#include <iomanip>  //setprecision, setw
+#include <string>   //string
 
-#define VIDER_BUFFER while (cin.ignore(numeric_limits<streamsize>::max(), '\n'))
+#define VIDER_BUFFER cin.ignore(numeric_limits<streamsize>::max(), '\n')
 
 using namespace std;
+
+int  saisieUtilisateur(string);
+bool estBissextille(int);
+void afficherCalendrier(int,bool);
+
 
 int main() {
 
