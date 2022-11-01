@@ -19,20 +19,20 @@
 
 using namespace std;
 
-int  saisieUtilisateur(string, int, int);
+int  saisieUtilisateur(const string&, int, int, const string&);
 bool estBissextille(int);
-void afficherCalendrier(int,bool);
-string nomMois(int);
+void afficherCalendrier(int);
+void detailsMois(int, bool, int&, string&);
 
 int main() {
    const int ANNEE_MIN = 1800;
    const int ANNEE_MAX = 2100;
+   const string MSG_ERREUR = "/!\\ veuillez saisir une année entre 1800 et 2100 ...";
+   const string MSG = "Entrer une annee [1800 et 2100] : ";
+   int annee = saisieUtilisateur(MSG, ANNEE_MIN, ANNEE_MAX, MSG_ERREUR);
 
-   int annee = saisieUtilisateur("Entrer une annee [1800 et 2100] : ", ANNEE_MIN, ANNEE_MAX);
-   bool estBissextile = estBissextille(annee);
-   afficherCalendrier(annee, estBissextille);
+   afficherCalendrier(annee);
 
-    cout << "Hello World!" ;
     return EXIT_SUCCESS;
 }
 
@@ -40,10 +40,10 @@ bool estBissextille(int annee) {
     return (annee % 4 == 0 && annee % 100 != 0) || annee % 400 == 0;
 }
 
-int  saisieUtilisateur(string msg, int min, int max) {
+int saisieUtilisateur(const string& msg, int min, int max, const string& MSG_ERREUR) {
     int annee;
     bool erreur;
-    const string MSG_ERREUR = "/!\\ veuillez saisir une année entre 1800 et 2100 ..."s;
+
     do {
         // message et saisie
         cout << msg;
@@ -54,50 +54,105 @@ int  saisieUtilisateur(string msg, int min, int max) {
             cin.clear();
         }
     }while(erreur);
+    VIDER_BUFFER;
 
-   return annee;
+    return annee;
 }
 
-string nomMois(int numMois){
-   string mois;
-   switch (numMois) {
-      case 1: mois = "JANVIER";
-         break;
-      case 2: mois = "FEVRIER";
-         break;
-      case 3: mois = "MARS";
-         break;
-      case 4: mois = "AVRIL";
-         break;
-      case 5: mois = "MAI";
-         break;
-      case 6: mois = "JUIN";
-         break;
-      case 7: mois = "JUILLET";
-         break;
-      case 8: mois = "AOUT";
-         break;
-      case 9: mois = "SEPTEMBRE";
-         break;
-      case 10: mois = "OCTOBRE";
-         break;
-      case 11: mois = "NOVEMBRE";
-         break;
-      case 12: mois = "DECEMBRE";
-         break;
+void detailsMois(int numMois, bool bissextille, int& nbJours, string& mois){
+
+    switch (numMois) {
+        case 1:
+            mois = "Janvier";
+            nbJours = 31;
+            break;
+        case 2:
+            mois = "Fevrier";
+            nbJours = 28+bissextille;
+            break;
+        case 3:
+            mois = "Mars";
+            nbJours = 31;
+            break;
+        case 4:
+            mois = "Avril";
+            nbJours = 30;
+            break;
+        case 5:
+            mois = "Mai";
+            nbJours = 31;
+            break;
+        case 6:
+            mois = "Juin";
+            nbJours = 30;
+            break;
+        case 7:
+            mois = "Juillet";
+            nbJours = 31;
+            break;
+        case 8:
+            mois = "Aout";
+            nbJours = 31;
+            break;
+        case 9:
+            mois = "Septembre";
+            nbJours = 30;
+            break;
+        case 10:
+            mois = "Octobre";
+            nbJours = 31;
+            break;
+        case 11:
+            mois = "Novembre";
+            nbJours = 30;
+            break;
+        case 12:
+            mois = "Decembre";
+            nbJours = 31;
+            break;
+        default:
+            mois = "Inconnu";
+            nbJours = 0;
+            break;
    }
-   return mois;
 }
 
 
-void afficherCalendrier(int annee, bool bissextile) {
+void afficherCalendrier(int annee) {
+    int nbJours = 0, position = 1;
+    string nomMois;
+
     for (int mois = 1; mois <= 12; mois++)
     {
-        cout << nomMois(mois) << " " << annee << endl;
-        cout << "Lun Mar Mer Jeu Ven Sam Dim" << endl;
-        for(int jour = 1; jour <= 31; jour++)
+
+        detailsMois(mois, estBissextille(annee), nbJours, nomMois);
+
+        cout << endl << nomMois << " " << annee << endl;
+        cout    << setw(4) << "Lun"
+                << setw(4) << "Mar"
+                << setw(4) << "Mer"
+                << setw(4) << "Jeu"
+                << setw(4) << "Ven"
+                << setw(4) << "Sam"
+                << setw(4) << "Dim" << endl;
+
+        for (int i = 1; i < position; i++)
+            cout << setw(4) << " ";
+
+        for(int jour = 1; jour <= nbJours; jour++)
         {
-            cout << setw(2) << jour << "/" << setw(2) << mois << "/" << annee << endl;
+            cout << setw(4) << jour;
+            if(position % 7 == 0)
+            {
+                position = 1;
+                cout << endl;
+            }
+            else
+            {
+                position++;
+            }
         }
+
+        cout << endl;
     }
 }
