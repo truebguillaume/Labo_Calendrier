@@ -34,24 +34,34 @@ int main() {
     return EXIT_SUCCESS;
 }
 
-int  saisieUtilisateur(string msg, int min, int max){
-   int annee;
-   bool erreur;
-   const string MSG_ERREUR = "/!\\ veuillez saisir une année entre 1800 et 2100 ..."s;
-   do {
-      // message et saisie
-      cout << msg;
-      erreur = not(cin >> annee) or annee < min or annee > max;
+bool estBissextille(int annee) {
+    return (annee % 4 == 0 && annee % 100 != 0) || annee % 400 == 0;
+}
 
-      if (erreur) {
-         cout << MSG_ERREUR << endl;
-         cin.clear();
-      }
+int  saisieUtilisateur(string msg, int min, int max) {
+    int annee;
+    bool erreur;
+    const string MSG_ERREUR = "/!\\ veuillez saisir une année entre 1800 et 2100 ..."s;
+    do {
+        // message et saisie
+        cout << msg;
+        erreur = not(cin >> annee) or annee < min or annee > max;
 
-      // vider buffer
-      VIDER_BUFFER;
+        if (erreur) {
+            cout << MSG_ERREUR << endl;
+            cin.clear();
+        }
+    }while(erreur);
+}
 
-   } while(erreur);
-
-   return annee;
+void afficherCalendrier(int annee, bool bissextile) {
+    for (int mois = 1; mois <= 12; mois++)
+    {
+        cout << "Janvier " << annee << endl;
+        cout << "Lun Mar Mer Jeu Ven Sam Dim" << endl;
+        for(int jour = 1; jour <= 31; jour++)
+        {
+            cout << setw(2) << jour << "/" << setw(2) << mois << "/" << annee << endl;
+        }
+    }
 }
