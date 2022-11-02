@@ -53,8 +53,11 @@ int saisieUtilisateur(const string& msg, int min, int max, const string& MSG_ERR
             cout << MSG_ERREUR << endl;
             cin.clear();
         }
+
+        VIDER_BUFFER;
+
     }while(erreur);
-    VIDER_BUFFER;
+
 
     return annee;
 }
