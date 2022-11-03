@@ -16,6 +16,7 @@
 
 #define VIDER_BUFFER std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n')
 
+// Cette méthode permet de demander à l'utilisateur une valeur, ensuite elle effectuera un contrôle de cette dernière
 int saisieUtilisateur(const std::string& msg, int min, int max, const std::string& MSG_ERREUR) {
     int saisie;
     bool erreur;
@@ -23,6 +24,7 @@ int saisieUtilisateur(const std::string& msg, int min, int max, const std::strin
     do {
         // message et saisie
         std::cout << msg;
+        // Vérifie si le flux est cassé ou si la valeur est en dehors des valeurs minimum et maximum
         erreur = not(std::cin >> saisie) or saisie < min or saisie > max;
 
         if (erreur) {
