@@ -17,10 +17,19 @@
 
 using namespace std;
 
+// Cette fonction permet de vérifier si l'année est bissextile ou non
+// Explication des paramètres :
+// annne = correspond à l'année saisie par l'utilisateur
 bool estBissextille(int annee) {
     return (annee % 4 == 0 && annee % 100 != 0) || annee % 400 == 0;
 }
 
+// Cette fonction permet de récupérer le mois à afficher lors du résultat du calendrier
+// Explication des paramètres :
+// numMois --> correspond au numéro du mois à afficher
+// bissextille --> indique si l'année est bissextile ou non
+// nbJours --> correspond au nombre de jours du mois numMois
+// mois --> nom du mois à afficher
 void detailsMois(int numMois, bool bissextille, int& nbJours, string& mois){
 
     switch (numMois) {
@@ -30,6 +39,7 @@ void detailsMois(int numMois, bool bissextille, int& nbJours, string& mois){
             break;
         case 2:
             mois = "Fevrier";
+            // Par rapport au résultat de si l'année est bissectixle, le nombre de jours peut être égal à 28 ou 29
             nbJours = 28+bissextille;
             break;
         case 3:
