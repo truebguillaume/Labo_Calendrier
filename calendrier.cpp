@@ -21,7 +21,7 @@ bool estBissextille(int annee) {
     return (annee % 4 == 0 && annee % 100 != 0) || annee % 400 == 0;
 }
 
-void detailsMois(int numMois, bool bissextille, int& nbJours, std::string& mois){
+void detailsMois(int numMois, bool bissextille, int& nbJours, string& mois){
 
     switch (numMois) {
         case 1:
@@ -82,7 +82,8 @@ void detailsMois(int numMois, bool bissextille, int& nbJours, std::string& mois)
 
 void afficherCalendrier(int annee) {
     int nbJours = 0, position = 1;
-    std::string nomMois;
+
+    string nomMois, joursDeLaSemaine = "LMMJVSD";
 
     for (int mois = 1; mois <= 12; mois++)
     {
@@ -90,16 +91,18 @@ void afficherCalendrier(int annee) {
         detailsMois(mois, estBissextille(annee), nbJours, nomMois);
 
         cout << endl << nomMois << " " << annee << endl;
-        cout    << setw(4) << "Lun"
-                << setw(4) << "Mar"
-                << setw(4) << "Mer"
-                << setw(4) << "Jeu"
-                << setw(4) << "Ven"
-                << setw(4) << "Sam"
-                << setw(4) << "Dim" << endl;
+
+        for(char c : joursDeLaSemaine)
+        {
+            cout << setw(4) << c;
+        }
+
+        cout << endl;
 
         for (int i = 1; i < position; i++)
+        {
             cout << setw(4) << " ";
+        }
 
         for(int jour = 1; jour <= nbJours; jour++)
         {
