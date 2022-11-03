@@ -79,45 +79,54 @@ void detailsMois(int numMois, bool bissextille, int& nbJours, string& mois){
     }
 }
 
+// Fonction permettant de construire l'affichage du calendrier
+// int& nbJours         : contient le nombre de jours pour le mois à afficher
+// int& position        : contient la position du premier jour du mois (L/M/M/..)
+void afficherCalendrier(int& nbJours, int& position) {
 
-void afficherCalendrier(int annee) {
-    int nbJours = 0, position = 1;
-
-    string nomMois, joursDeLaSemaine = "LMMJVSD";
-
-    for (int mois = 1; mois <= 12; mois++)
+    // Décale la position du premier jour
+    for (int i = 1; i < position; i++)
     {
+        cout << setw(4) << " ";
+    }
 
+    //
+    for(int jour = 1; jour <= nbJours; jour++)
+    {
+        cout << setw(4) << jour;
+        if(position % 7 == 0)
+        {
+            position = 1;
+            cout << endl;
+        }
+        else
+        {
+            position++;
+        }
+    }
+
+    cout << endl;
+}
+
+void calculerCalendrier(int annee) {
+
+    int nbJours = 0, position = 1;
+    string nomMois, joursSemaine = "LMMJVSD";
+
+    for(int mois = 1; mois <= 12; mois++)
+    {
         detailsMois(mois, estBissextille(annee), nbJours, nomMois);
-
         cout << endl << nomMois << " " << annee << endl;
 
-        for(char c : joursDeLaSemaine)
+        for(char c : joursSemaine)
         {
             cout << setw(4) << c;
         }
 
         cout << endl;
 
-        for (int i = 1; i < position; i++)
-        {
-            cout << setw(4) << " ";
-        }
+        afficherCalendrier(nbJours, position);
 
-        for(int jour = 1; jour <= nbJours; jour++)
-        {
-            cout << setw(4) << jour;
-            if(position % 7 == 0)
-            {
-                position = 1;
-                cout << endl;
-            }
-            else
-            {
-                position++;
-            }
-        }
-
-        cout << endl;
     }
 }
+

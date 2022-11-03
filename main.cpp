@@ -26,7 +26,7 @@ int main() {
 
    int annee = saisieUtilisateur(MSG, ANNEE_MIN, ANNEE_MAX, MSG_ERREUR);
 
-   afficherCalendrier(annee);
+    calculerCalendrier(annee);
 
    return EXIT_SUCCESS;
 }

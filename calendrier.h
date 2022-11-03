@@ -13,7 +13,7 @@
 #define LABO_CALENDRIER_CALENDRIER_H
 
 bool estBissextille(int);
-void afficherCalendrier(int);
+void calculerCalendrier(int);
 void detailsMois(int, bool, int&, std::string&);
 
 #endif //LABO_CALENDRIER_CALENDRIER_H
