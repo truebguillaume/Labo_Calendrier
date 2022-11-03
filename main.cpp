@@ -1,7 +1,7 @@
 //---------------------------------------------------------
 // Demo           : ModelCpp
-// Fichier        : ModelCpp.cpp
-// Auteur(s)      : Trüeb Guillaume
+// Fichier        : main.cpp
+// Auteur(s)      : Trüeb Guillaume & Vasques Dario
 // But            : Modèle pour démarrer un projet en C++
 // Modifications  :
 // Remarque(s)    : -

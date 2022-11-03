@@ -1,6 +1,13 @@
-//
-// Created by Guillaume Trüeb on 03.11.22.
-//
+//---------------------------------------------------------
+// Demo           : ModelCpp
+// Fichier        : calendrier.cpp
+// Auteur(s)      : Trüeb Guillaume & Vasques Dario
+// But            : Modèle pour démarrer un projet en C++
+// Modifications  :
+// Remarque(s)    : -
+// Compilateur    : Apple clang version 14.0.0
+// C++ version    : C++20
+//---------------------------------------------------------
 
 #include <string>
 #include <iomanip>  //setprecision, setw
