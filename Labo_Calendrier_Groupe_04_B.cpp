@@ -1,6 +1,6 @@
 //---------------------------------------------------------
-// Demo           : ModelCpp
-// Fichier        : main.cpp
+// Demo           : Labo_Calendrier_Groupe_04_B
+// Fichier        : Labo_Calendrier_Groupe_04_B.cpp
 // Auteur(s)      : Trüeb Guillaume & Vasques Dario
 // But            : Modèle pour démarrer un projet en C++
 // Modifications  :

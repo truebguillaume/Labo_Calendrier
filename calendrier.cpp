@@ -153,7 +153,8 @@ void afficherCalendrier(int& nbJours, int& position) {
 }
 
 // Fonction permettant de calculer les informations principales du calendrier
-// int annee         : contient l'année saisie par l'utilisateur
+// Explication des paramètres :
+// int annee                  : contient l'année saisie par l'utilisateur
 void calculerCalendrier(int annee) {
 
     int nbJours = 0;                                        // Contient le nombre de jours pour le mois à afficher
