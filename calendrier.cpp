@@ -96,12 +96,12 @@ void detailsMois(int numMois, bool bissextile, int& nbJours, string& nomMois){
 // https://en.wikipedia.org/wiki/Zeller%27s_congruence
 // Explication des paramètres :
 // int& nbJours               : contient le nombre de jours pour le mois à afficher
-int calculerPremierJourAnnee(int& annnee)
+int calculerPremierJourAnnee(int& annee)
 {
     const int JOUR = 1;                                          // Correspond au premier jour de janvier
     const int MOIS = 13;                                         // Mois 13 correspond à Janvier
-    const int DERNIERS_CHIFFRES_ANNEE = (annnee - 1) % 100;      // Correspond aux 2 derniers chiffres de l'annee - 1
-    const int PREMIERS_CHIFFRES_ANNEE = (annnee - 1) / 100;      // Correspond aux 2 premiers chiffres de l'annee - 1
+    const int DERNIERS_CHIFFRES_ANNEE = (annee - 1) % 100;      // Correspond aux 2 derniers chiffres de l'annee - 1
+    const int PREMIERS_CHIFFRES_ANNEE = (annee - 1) / 100;      // Correspond aux 2 premiers chiffres de l'annee - 1
 
     // Calcul du jour de la semaine du premier jour de l'année en se basant sur l'algorithme de Zeller
     int premierJour =   (int)(JOUR + floor(13 * (MOIS + 1) / 5) +

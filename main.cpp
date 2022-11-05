@@ -21,8 +21,8 @@ int main() {
    const int ANNEE_MIN = 1800, ANNEE_MAX = 2100;
 
    // Déclaration des messages à afficher
-   const std::string MSG_ERREUR = "/!\\ veuillez saisir une année entre 1800 et 2100 ...";
-   const std::string MSG = "Entrer une annee [1800 et 2100] : ";
+   const std::string MSG_ERREUR  = "/!\\ veuillez saisir une année entre 1800 et 2100 ...";
+   const std::string MSG         = "Entrer une annee [1800 et 2100] : ";
 
    // Fait tourner le programme tant que l'utilisateur ne quitte pas
    do {

@@ -2,7 +2,8 @@
 // Demo           : ModelCpp
 // Fichier        : saisie_utilisateur.h
 // Auteur(s)      : Trüeb Guillaume & Vasques Dario
-// But            : Modèle pour démarrer un projet en C++
+// But            : Fichier permettant de récupérer la saisie de l'utilisateur puis de la contrôler et de demander
+//                  à l'utilisateur s'il souhaite recommencer le programme.
 // Modifications  :
 // Remarque(s)    : -
 // Compilateur    : Apple clang version 14.0.0
