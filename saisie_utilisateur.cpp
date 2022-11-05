@@ -49,14 +49,18 @@ int saisieUtilisateur(const std::string& MSG, int min, int max, const std::strin
 
 // Cette fonction permet à l'utilisateur de recommencer le programme
 bool recommencerProgramme() {
-    char saisie;
-    bool erreur;
-    bool recommencer;
+    char saisie;                // Variable de stockage de la saisie
+    bool erreur;                // Variable de stockage de l'état de la saisie
+    bool recommencer;           // Variable de stockage de la réponse de retour
 
     do {
+        // Affichage message de demande de saisie
         std::cout << "Voulez-vous recommencer le programme ? (o/n) : ";
+
+        // Vérifie si le flux est cassé ou si la valeur est en dehors des valeurs minimum et maximum
         erreur = not(std::cin >> saisie) or (saisie != 'o' and saisie != 'n');
 
+        // Si la saisie est incorrecte affiche message erreur et répare le flux
         if (erreur) {
             std::cout << "/!\\ Veuillez saisir 'o' ou 'n' ..." << std::endl;
             std::cin.clear();

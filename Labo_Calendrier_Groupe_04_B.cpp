@@ -2,15 +2,16 @@
 // Demo           : Labo_Calendrier_Groupe_04_B
 // Fichier        : Labo_Calendrier_Groupe_04_B.cpp
 // Auteur(s)      : Trüeb Guillaume & Vasques Dario
-// But            : Modèle pour démarrer un projet en C++
+// But            : Application permettant de calculer et afficher
+//                : le calendrier d'une année donnée en paramètre.
 // Modifications  :
 // Remarque(s)    : -
 // Compilateur    : Apple clang version 14.0.0
 // C++ version    : C++20
 //---------------------------------------------------------
 
-#include <cstdlib>  //EXIT_SUCCESS
 #include <string>   //string
+#include <cstdlib>  //EXIT_SUCCESS
 
 #include "saisie_utilisateur.h"
 #include "calendrier.h"
