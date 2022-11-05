@@ -1,8 +1,9 @@
 //---------------------------------------------------------
-// Demo           : ModelCpp
+// Demo           : Calendrier
 // Fichier        : calendrier.h
 // Auteur(s)      : Trüeb Guillaume & Vasques Dario
-// But            : Modèle pour démarrer un projet en C++
+// But            : Fichier permettant de calculer le calendrier d'une année
+//                : donnée en paramètre provenant de la saisie d'un utilisateur.
 // Modifications  :
 // Remarque(s)    : -
 // Compilateur    : Apple clang version 14.0.0

@@ -1,97 +1,132 @@
 //---------------------------------------------------------
-// Demo           : ModelCpp
+// Demo           : Calendrier
 // Fichier        : calendrier.cpp
 // Auteur(s)      : Trüeb Guillaume & Vasques Dario
-// But            : Modèle pour démarrer un projet en C++
+// But            : Fichier permettant de calculer le calendrier d'une année
+//                : donnée en paramètre provenant de la saisie d'un utilisateur.
 // Modifications  :
 // Remarque(s)    : -
 // Compilateur    : Apple clang version 14.0.0
 // C++ version    : C++20
 //---------------------------------------------------------
 
-#include <string>
 #include <iomanip>  //setprecision, setw
 #include <iostream> //cout, cin
+#include <string>   //string
+#include <cmath>    //floor
 
 #include "calendrier.h"
 
 using namespace std;
 
-// Cette fonction permet de vérifier si l'année est bissextile ou non
+// Cette fonction permet de vérifier si l'année est bissextile
 // Explication des paramètres :
-// annne = correspond à l'année saisie par l'utilisateur
+// int& annne                 : correspond à l'année saisie par l'utilisateur
 bool estBissextille(int annee) {
     return (annee % 4 == 0 && annee % 100 != 0) || annee % 400 == 0;
 }
 
 // Cette fonction permet de récupérer le mois à afficher lors du résultat du calendrier
 // Explication des paramètres :
-// numMois --> correspond au numéro du mois à afficher
-// bissextille --> indique si l'année est bissextile ou non
-// nbJours --> correspond au nombre de jours du mois numMois
-// mois --> nom du mois à afficher
-void detailsMois(int numMois, bool bissextille, int& nbJours, string& mois){
+// int numMois                : correspond au numéro du mois à afficher
+// bool bissextile            : indique si l'année est bissextile ou non
+// int& nbJours               : correspond au nombre de jours du mois
+// string& nomMois            : nom du mois à afficher
+void detailsMois(int numMois, bool bissextile, int& nbJours, string& nomMois){
 
     switch (numMois) {
         case 1:
-            mois = "Janvier";
+            nomMois = "Janvier";
             nbJours = 31;
             break;
         case 2:
-            mois = "Fevrier";
-            // Par rapport au résultat de si l'année est bissectixle, le nombre de jours peut être égal à 28 ou 29
-            nbJours = 28+bissextille;
+            nomMois = "Fevrier";
+            // Par rapport au résultat de si l'année est bissextile, le nombre de jours peut être égal à 28 ou 29
+            nbJours = 28 + bissextile;
             break;
         case 3:
-            mois = "Mars";
+            nomMois = "Mars";
             nbJours = 31;
             break;
         case 4:
-            mois = "Avril";
+            nomMois = "Avril";
             nbJours = 30;
             break;
         case 5:
-            mois = "Mai";
+            nomMois = "Mai";
             nbJours = 31;
             break;
         case 6:
-            mois = "Juin";
+            nomMois = "Juin";
             nbJours = 30;
             break;
         case 7:
-            mois = "Juillet";
+            nomMois = "Juillet";
             nbJours = 31;
             break;
         case 8:
-            mois = "Aout";
+            nomMois = "Aout";
             nbJours = 31;
             break;
         case 9:
-            mois = "Septembre";
+            nomMois = "Septembre";
             nbJours = 30;
             break;
         case 10:
-            mois = "Octobre";
+            nomMois = "Octobre";
             nbJours = 31;
             break;
         case 11:
-            mois = "Novembre";
+            nomMois = "Novembre";
             nbJours = 30;
             break;
         case 12:
-            mois = "Decembre";
+            nomMois = "Decembre";
             nbJours = 31;
             break;
         default:
-            mois = "Inconnu";
+            nomMois = "Inconnu";
             nbJours = 0;
             break;
     }
 }
 
+// Fonction permettant de trouver le premier jour de l'annee en saisie par l'utilisateur
+// en se basant sur l'algorithme de Zeller.
+// https://en.wikipedia.org/wiki/Zeller%27s_congruence
+// Explication des paramètres :
+// int& nbJours               : contient le nombre de jours pour le mois à afficher
+// int& position              : contient la position du premier jour du mois (L/M/M/..)
+int calculerPremierJourAnnee(int& annnee)
+{
+    const int JOUR = 1;                                          // Correspond au premier jour de janvier
+    const int MOIS = 13;                                         // Mois 13 correspond à Janvier
+    const int DERNIERS_CHIFFRES_ANNEE = (annnee - 1) % 100;      // Correspond aux 2 derniers chiffres de l'annee - 1
+    const int PREMIERS_CHIFFRES_ANNEE = (annnee - 1) / 100;      // Correspond aux 2 premiers chiffres de l'annee - 1
+
+    // Calcul du jour de la semaine du premier jour de l'année en se basant sur l'algorithme de Zeller
+    int premierJour =   (int)(JOUR + floor(13 * (MOIS + 1) / 5) +
+                        DERNIERS_CHIFFRES_ANNEE + floor(DERNIERS_CHIFFRES_ANNEE / 4) +
+                        floor(PREMIERS_CHIFFRES_ANNEE / 4) - (2 * PREMIERS_CHIFFRES_ANNEE)) % 7;
+
+    // Boucle permettant de connaitre le décalage en fonction du jour de la semaine
+    if(premierJour < 2)
+    {
+        premierJour += 6;
+    }
+    else
+    {
+        --premierJour;
+    }
+
+    return premierJour;
+
+}
+
 // Fonction permettant de construire l'affichage du calendrier
-// int& nbJours         : contient le nombre de jours pour le mois à afficher
-// int& position        : contient la position du premier jour du mois (L/M/M/..)
+// Explication des paramètres :
+// int& nbJours               : contient le nombre de jours pour le mois à afficher
+// int& position              : contient la position du premier jour du mois (L/M/M/..)
 void afficherCalendrier(int& nbJours, int& position) {
 
     // Décale la position du premier jour
@@ -100,7 +135,7 @@ void afficherCalendrier(int& nbJours, int& position) {
         cout << setw(4) << " ";
     }
 
-    //
+    // Ecrit les jours par ligne de 7
     for(int jour = 1; jour <= nbJours; jour++)
     {
         cout << setw(4) << jour;
@@ -118,16 +153,25 @@ void afficherCalendrier(int& nbJours, int& position) {
     cout << endl;
 }
 
+// Fonction permettant de calculer les informations principales du calendrier
+// int annee         : contient l'année saisie par l'utilisateur
 void calculerCalendrier(int annee) {
 
-    int nbJours = 0, position = 1;
-    string nomMois, joursSemaine = "LMMJVSD";
+    int nbJours = 0;                                        // Contient le nombre de jours pour le mois à afficher
+    int position = calculerPremierJourAnnee(annee);     // Contient la position du premier jour du mois (L/M/M/..)
+    string nomMois;                                         // Contient le nom du mois à afficher
+    string joursSemaine = "LMMJVSD";                        // Titre des jours de la semaine
 
-    for(int mois = 1; mois <= 12; mois++)
+    // Boucle permettant de calculer le calendrier pour chaque mois de l'année
+    for(int numMois = 1; numMois <= 12; numMois++)
     {
-        detailsMois(mois, estBissextille(annee), nbJours, nomMois);
+        // Récupère les informations du mois à afficher
+        detailsMois(numMois, estBissextille(annee), nbJours, nomMois);
+
+        // Affiche le titre du mois et l'année
         cout << endl << nomMois << " " << annee << endl;
 
+        // Affiche les jours de la semaine
         for(char c : joursSemaine)
         {
             cout << setw(4) << c;
@@ -135,8 +179,8 @@ void calculerCalendrier(int annee) {
 
         cout << endl;
 
+        // Affiche le calendrier du mois
         afficherCalendrier(nbJours, position);
 
     }
 }
-

@@ -15,8 +15,6 @@
 #include "saisie_utilisateur.h"
 #include "calendrier.h"
 
-
-
 int main() {
 
    // Déclaration des valeurs minimum et maximum
@@ -26,9 +24,16 @@ int main() {
    const std::string MSG_ERREUR = "/!\\ veuillez saisir une année entre 1800 et 2100 ...";
    const std::string MSG = "Entrer une annee [1800 et 2100] : ";
 
-   int annee = saisieUtilisateur(MSG, ANNEE_MIN, ANNEE_MAX, MSG_ERREUR);
+   // Fait tourner le programme tant que l'utilisateur ne quitte pas
+   do {
 
-    calculerCalendrier(annee);
+        // Récupération de l'année saisie par l'utilisateur
+        int annee = saisieUtilisateur(MSG, ANNEE_MIN, ANNEE_MAX, MSG_ERREUR);
+
+        // Affichage du calendrier
+        calculerCalendrier(annee);
+
+   } while (recommencerProgramme());
 
    return EXIT_SUCCESS;
 }

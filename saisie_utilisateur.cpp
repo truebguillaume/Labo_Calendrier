@@ -11,27 +11,29 @@
 
 #include <iostream> //cout, cin
 
-
 #include "saisie_utilisateur.h"
 
 #define VIDER_BUFFER std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n')
 
-// Cette fonction permet de demander à l'utilisateur une valeur et de la contrôler
+// Cette fonction permet à l'utilisateur d'entrer une valeur de type int
 // Explication des paramètres :
-// MSG --> correspond au message de demande de saisie
-// min --> correspond à la valeur de saisie minimum
-// max --> correspond à la valeur de saisie maximum
-// MSG_ERREUR --> correspond au message d'erreur à afficher si l'entrée est fausse
+// string& MSG                : correspond au message de demande de saisie
+// int min                    : correspond à la valeur de saisie minimum
+// int max                    : correspond à la valeur de saisie maximum
+// string& MSG_ERREUR         : correspond au message d'erreur à afficher si l'entrée est fausse
 int saisieUtilisateur(const std::string& MSG, int min, int max, const std::string& MSG_ERREUR) {
-    int saisie;
-    bool erreur;
+
+    int saisie;                 // Variable de stockage de la saisie
+    bool erreur;                // Variable de stockage de l'état de la saisie
 
     do {
-        // message et saisie
+        // Affichage message de demande de saisie
         std::cout << MSG;
+
         // Vérifie si le flux est cassé ou si la valeur est en dehors des valeurs minimum et maximum
         erreur = not(std::cin >> saisie) or saisie < min or saisie > max;
 
+        // Si la saisie est incorrecte affiche message erreur et répare le flux
         if (erreur) {
             std::cout << MSG_ERREUR << std::endl;
             std::cin.clear();
@@ -41,6 +43,35 @@ int saisieUtilisateur(const std::string& MSG, int min, int max, const std::strin
 
     }while(erreur);
 
-
     return saisie;
+}
+
+// Cette fonction permet à l'utilisateur de recommencer le programme
+bool recommencerProgramme() {
+    char saisie;
+    bool erreur;
+    bool recommencer;
+
+    do {
+        std::cout << "Voulez-vous recommencer le programme ? (o/n) : ";
+        erreur = not(std::cin >> saisie) or (saisie != 'o' and saisie != 'n');
+
+        if (erreur) {
+            std::cout << "/!\\ Veuillez saisir 'o' ou 'n' ..." << std::endl;
+            std::cin.clear();
+        }
+
+        VIDER_BUFFER;
+
+    }while(erreur);
+
+    // Si l'utilisateur a saisi 'o' on retourne true
+    if (saisie == 'o') {
+        recommencer = true;
+    }
+    else {
+        recommencer = false;
+    }
+
+    return recommencer;
 }

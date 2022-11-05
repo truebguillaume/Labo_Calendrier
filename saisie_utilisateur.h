@@ -13,5 +13,6 @@
 #define LABO_CALENDRIER_SAISIE_UTILISATEUR_H
 
 int  saisieUtilisateur(const std::string&, int, int, const std::string&);
+bool recommencerProgramme();
 
 #endif //LABO_CALENDRIER_SAISIE_UTILISATEUR_H
