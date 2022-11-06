@@ -1,15 +1,17 @@
 //---------------------------------------------------------
-// Fichier        : main.cpp
+// Demo           : Labo_Calendrier_Groupe_04_B
+// Fichier        : Labo_Calendrier_Groupe_04_B.cpp
 // Auteur(s)      : Trüeb Guillaume & Vasques Dario
-// But            : Fichier permettant d'afficher le calendrier d'une année saisie par l'utilisateur
+// But            : Application permettant de calculer et afficher
+//                : le calendrier d'une année donnée en paramètre.
 // Modifications  :
 // Remarque(s)    : -
 // Compilateur    : Apple clang version 14.0.0
 // C++ version    : C++20
 //---------------------------------------------------------
 
-#include <cstdlib>  //EXIT_SUCCESS
 #include <string>   //string
+#include <cstdlib>  //EXIT_SUCCESS
 
 #include "saisie_utilisateur.h"
 #include "calendrier.h"
@@ -17,8 +19,7 @@
 int main() {
 
    // Déclaration des valeurs minimum et maximum
-   const int   ANNEE_MIN = 1800,
-               ANNEE_MAX = 2100;
+   const int ANNEE_MIN = 1800, ANNEE_MAX = 2100;
 
    // Déclaration des messages à afficher
    const std::string MSG_ERREUR  = "/!\\ veuillez saisir une année entre 1800 et 2100 ...";
