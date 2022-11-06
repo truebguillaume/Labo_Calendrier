@@ -1,5 +1,4 @@
 //---------------------------------------------------------
-// Demo           : Calendrier
 // Fichier        : calendrier.h
 // Auteur(s)      : Trüeb Guillaume & Vasques Dario
 // But            : Fichier permettant de calculer le calendrier d'une année

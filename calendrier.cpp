@@ -1,5 +1,4 @@
 //---------------------------------------------------------
-// Demo           : Calendrier
 // Fichier        : calendrier.cpp
 // Auteur(s)      : Trüeb Guillaume & Vasques Dario
 // But            : Fichier permettant de calculer le calendrier d'une année
@@ -21,7 +20,7 @@ using namespace std;
 
 // Cette fonction permet de vérifier si l'année est bissextile
 // Explication des paramètres :
-// int& annne                 : correspond à l'année saisie par l'utilisateur
+// int annne                 : correspond à l'année saisie par l'utilisateur
 bool estBissextille(int annee) {
     return (annee % 4 == 0 && annee % 100 != 0) || annee % 400 == 0;
 }
@@ -95,13 +94,14 @@ void detailsMois(int numMois, bool bissextile, int& nbJours, string& nomMois){
 // en se basant sur l'algorithme de Zeller.
 // https://en.wikipedia.org/wiki/Zeller%27s_congruence
 // Explication des paramètres :
-// int& nbJours               : contient le nombre de jours pour le mois à afficher
-int calculerPremierJourAnnee(int& annee)
+// int annee                  : contient l'année saisie par l'utilisateur
+int calculerPremierJourAnnee(int annee)
 {
-    const int JOUR = 1;                                          // Correspond au premier jour de janvier
-    const int MOIS = 13;                                         // Mois 13 correspond à Janvier
+    const int  JOUR = 1,                                        // Correspond au premier jour de janvier
+               MOIS = 13;                                       // Mois 13 correspond à Janvier
     const int DERNIERS_CHIFFRES_ANNEE = (annee - 1) % 100;      // Correspond aux 2 derniers chiffres de l'annee - 1
     const int PREMIERS_CHIFFRES_ANNEE = (annee - 1) / 100;      // Correspond aux 2 premiers chiffres de l'annee - 1
+
 
     // Calcul du jour de la semaine du premier jour de l'année en se basant sur l'algorithme de Zeller
     int premierJour =   (int)(JOUR + floor(13 * (MOIS + 1) / 5) +
@@ -156,10 +156,10 @@ void afficherCalendrier(int& nbJours, int& position) {
 // int annee         : contient l'année saisie par l'utilisateur
 void calculerCalendrier(int annee) {
 
-    int nbJours = 0;                                        // Contient le nombre de jours pour le mois à afficher
-    int position = calculerPremierJourAnnee(annee);     // Contient la position du premier jour du mois (L/M/M/..)
-    string nomMois;                                         // Contient le nom du mois à afficher
-    string joursSemaine = "LMMJVSD";                        // Titre des jours de la semaine
+    int nbJours = 0;                                      // Contient le nombre de jours pour le mois à afficher
+    int position = calculerPremierJourAnnee(annee);       // Contient la position du premier jour du mois (L/M/M/..)
+    string nomMois;                                       // Contient le nom du mois à afficher
+    string joursSemaine = "LMMJVSD";                      // Titre des jours de la semaine
 
     // Boucle permettant de calculer le calendrier pour chaque mois de l'année
     for(int numMois = 1; numMois <= 12; numMois++)

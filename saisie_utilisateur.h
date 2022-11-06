@@ -1,5 +1,4 @@
 //---------------------------------------------------------
-// Demo           : ModelCpp
 // Fichier        : saisie_utilisateur.h
 // Auteur(s)      : Trüeb Guillaume & Vasques Dario
 // But            : Fichier permettant de récupérer la saisie de l'utilisateur puis de la contrôler et de demander

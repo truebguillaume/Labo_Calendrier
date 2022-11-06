@@ -1,8 +1,7 @@
 //---------------------------------------------------------
-// Demo           : ModelCpp
 // Fichier        : main.cpp
 // Auteur(s)      : Trüeb Guillaume & Vasques Dario
-// But            : Modèle pour démarrer un projet en C++
+// But            : Fichier permettant d'afficher le calendrier d'une année saisie par l'utilisateur
 // Modifications  :
 // Remarque(s)    : -
 // Compilateur    : Apple clang version 14.0.0
@@ -18,7 +17,8 @@
 int main() {
 
    // Déclaration des valeurs minimum et maximum
-   const int ANNEE_MIN = 1800, ANNEE_MAX = 2100;
+   const int   ANNEE_MIN = 1800,
+               ANNEE_MAX = 2100;
 
    // Déclaration des messages à afficher
    const std::string MSG_ERREUR  = "/!\\ veuillez saisir une année entre 1800 et 2100 ...";
