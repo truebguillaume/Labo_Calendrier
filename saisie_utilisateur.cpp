@@ -1,5 +1,4 @@
 //---------------------------------------------------------
-// Demo           : SaisieUtilisateur
 // Fichier        : saisie_utilisateur.cpp
 // Auteur(s)      : Trüeb Guillaume & Vasques Dario
 // But            : Fichier permettant de récupérer la saisie de l'utilisateur puis de la contrôler et de demander
@@ -24,8 +23,8 @@
 // string& MSG_ERREUR         : correspond au message d'erreur à afficher si l'entrée est fausse
 int saisieUtilisateur(const std::string& MSG, int min, int max, const std::string& MSG_ERREUR) {
 
-    int saisie;                 // Variable de stockage de la saisie
-    bool erreur;                // Variable de stockage de l'état de la saisie
+    int  saisie;                 // Variable de stockage de la saisie
+    bool erreur;                 // Variable de stockage de l'état de la saisie
 
     do {
         // Affichage message de demande de saisie
