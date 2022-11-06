@@ -18,8 +18,8 @@
 // Cette fonction permet à l'utilisateur d'entrer une valeur de type int
 // Explication des paramètres :
 // string& MSG                : correspond au message de demande de saisie
-// int min                    : correspond à la valeur de saisie minimum
-// int max                    : correspond à la valeur de saisie maximum
+// int     min                : correspond à la valeur de saisie minimum
+// int     max                : correspond à la valeur de saisie maximum
 // string& MSG_ERREUR         : correspond au message d'erreur à afficher si l'entrée est fausse
 int saisieUtilisateur(const std::string& MSG, int min, int max, const std::string& MSG_ERREUR) {
 
@@ -54,7 +54,7 @@ bool recommencerProgramme() {
 
     do {
         // Affichage message de demande de saisie
-        std::cout << "Voulez-vous recommencer le programme ? (o/n) : ";
+        std::cout << std::endl << "Voulez-vous recommencer le programme ? (o/n) : ";
 
         // Vérifie si le flux est cassé ou si la valeur est en dehors des valeurs minimum et maximum
         erreur = not(std::cin >> saisie) or (saisie != 'o' and saisie != 'n');

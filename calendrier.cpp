@@ -18,18 +18,20 @@
 
 using namespace std;
 
+const int LONGUEUR_AFFICHAGE = 4;   //Longueur d'affichage d'une case du calendrier
+
 // Cette fonction permet de vérifier si l'année est bissextile
 // Explication des paramètres :
-// int annne                 : correspond à l'année saisie par l'utilisateur
+// int annne                  : correspond à l'année saisie par l'utilisateur
 bool estBissextille(int annee) {
     return (annee % 4 == 0 && annee % 100 != 0) || annee % 400 == 0;
 }
 
 // Cette fonction permet de récupérer le mois à afficher lors du résultat du calendrier
 // Explication des paramètres :
-// int numMois                : correspond au numéro du mois à afficher
-// bool bissextile            : indique si l'année est bissextile ou non
-// int& nbJours               : correspond au nombre de jours du mois
+// int     numMois            : correspond au numéro du mois à afficher
+// bool    bissextile         : indique si l'année est bissextile ou non
+// int&    nbJours            : correspond au nombre de jours du mois
 // string& nomMois            : nom du mois à afficher
 void detailsMois(int numMois, bool bissextile, int& nbJours, string& nomMois){
 
@@ -90,7 +92,7 @@ void detailsMois(int numMois, bool bissextile, int& nbJours, string& nomMois){
     }
 }
 
-// Fonction permettant de trouver le premier jour de l'annee en saisie par l'utilisateur
+// Fonction permettant de trouver le premier jour de l'annee saisie par l'utilisateur
 // en se basant sur l'algorithme de Zeller.
 // https://en.wikipedia.org/wiki/Zeller%27s_congruence
 // Explication des paramètres :
@@ -131,13 +133,13 @@ void afficherCalendrier(int& nbJours, int& position) {
     // Décale la position du premier jour
     for (int i = 1; i < position; i++)
     {
-        cout << setw(4) << " ";
+        cout << setw(LONGUEUR_AFFICHAGE) << " ";
     }
 
     // Ecrit les jours par ligne de 7
     for(int jour = 1; jour <= nbJours; jour++)
     {
-        cout << setw(4) << jour;
+        cout << setw(LONGUEUR_AFFICHAGE) << jour;
         if(position % 7 == 0)
         {
             position = 1;
@@ -174,7 +176,7 @@ void calculerCalendrier(int annee) {
         // Affiche les jours de la semaine
         for(char c : joursSemaine)
         {
-            cout << setw(4) << c;
+            cout << setw(LONGUEUR_AFFICHAGE) << c;
         }
 
         cout << endl;
